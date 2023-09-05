@@ -1,6 +1,6 @@
 # Vue 3 + TypeScript + Vite + Axios + Element plus + Vuex
 
-欢迎Star & From
+欢迎Star & FroK
 
 - 📌 Local development
 
