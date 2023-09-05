@@ -6,8 +6,6 @@
 
 - [ ] Build backend
 
-------
-
 ## How to develop locally
 
 - 📌 Local development
