@@ -1,6 +1,7 @@
 # Vue 3 + TypeScript + Vite + Axios + Element plus + Vuex
 
 欢迎Star & Frok
+相关课程作业在 **/assignments**
 
 ## TODO:
 
