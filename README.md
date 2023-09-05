@@ -1,6 +1,6 @@
 # Vue 3 + TypeScript + Vite + Axios + Element plus + Vuex
 
-欢迎Star & FroK
+欢迎Star & Frok
 
 - 📌 Local development
 
@@ -14,8 +14,12 @@
   pnpm test
   ```
 
-- 🚀 Package build
+- 📦 Package build
 
   ```
   pnpm build
   ```
+
+## 🚀 Deploy on your own
+
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Francismiko/information-development-course)
