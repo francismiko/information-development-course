@@ -5,6 +5,8 @@
 ## TODO:
 
 - [ ] Build backend
+- [ ] Chatbot homepage
+- [ ] Integrate langchain
 
 ## How to develop locally
 
