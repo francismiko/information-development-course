@@ -14,19 +14,19 @@
 - 📌 Local development
 
   ```bash
-  pnpm install
+  bun install
   ```
 
 - 🛠️ Development testing
 
   ```bash
-  pnpm test
+  bun test
   ```
 
 - 📦 Package build
 
   ```
-  pnpm build
+  bun run build
   ```
 
 ## 🚀 Deploy on your own
