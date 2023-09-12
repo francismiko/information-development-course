@@ -1,4 +1,4 @@
-# Vue 3 + TypeScript + Vite + Axios + Element plus + Vuex
+# Nest + Vue 3 + TypeScript + Vite + Axios + Element plus + Pinia
 
 欢迎Star & Frok
 相关课程作业在 **/assignments**
