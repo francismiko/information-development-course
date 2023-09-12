@@ -31,4 +31,4 @@
 
 ## 🚀 Deploy on your own
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Francismiko/information-development-course)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Francismiko/information-development-course/frontend)
