@@ -1,7 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 
-const fruits = ref(
+interface Fruit {
+  id: number;
+  image: string;
+  name: string;
+  price: string;
+  description: string;
+  sold: number;
+  reviews: number;
+}
+
+const fruits = ref<Fruit[]>(
   Array(10).fill(null).map((_, index) => ({
     id: index + 1,
     image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7',
@@ -14,7 +24,7 @@ const fruits = ref(
 );
 
 const groupedFruits = computed(() => {
-  let groups = [];
+  let groups: Fruit[][] = [];
   for (let i = 0; i < fruits.value.length; i += 5) {
     groups.push(fruits.value.slice(i, i + 5));
   }
