@@ -1,34 +1,25 @@
-<script>
+<script setup>
 import { ref, computed } from 'vue';
 
-export default {
-  setup() {
-    const fruits = ref([
-      { id: 1, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 2, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 3, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 4, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 5, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 6, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 7, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 8, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 9, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-      { id: 10, image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7', name: 'Apple', price: '$1', description: 'Fresh apple', sold: 100, reviews: 50 },
-    ]);
+const fruits = ref(
+  Array(10).fill(null).map((_, index) => ({
+    id: index + 1,
+    image: 'https://th.bing.com/th/id/OIP.-Y9W58cVwHMaH021cnmzGgHaIY?w=159&h=181&c=7&r=0&o=5&dpr=2&pid=1.7',
+    name: 'Apple',
+    price: '$1',
+    description: 'Fresh apple',
+    sold: 100,
+    reviews: 50
+  }))
+);
 
-    const groupedFruits = computed(() => {
-      let groups = [];
-      for (let i = 0; i < fruits.value.length; i += 5) {
-        groups.push(fruits.value.slice(i, i + 5));
-      }
-      return groups;
-    });
-
-    return {
-      groupedFruits
-    };
+const groupedFruits = computed(() => {
+  let groups = [];
+  for (let i = 0; i < fruits.value.length; i += 5) {
+    groups.push(fruits.value.slice(i, i + 5));
   }
-}
+  return groups;
+});
 </script>
 <template>
   <div class="fruit-shop">
@@ -70,7 +61,7 @@ export default {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .fruit-image:hover {
