@@ -70,10 +70,16 @@ export default {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.5s ease-in-out;
+}
+
+.fruit-image:hover {
+  cursor: pointer;
+  transform: scale(1.15);
 }
 
 .fruit-info {
-  padding: 2px;
+  padding-top: 20px;
 }
 
 .extra-info {
