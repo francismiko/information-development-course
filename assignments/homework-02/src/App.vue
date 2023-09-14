@@ -30,8 +30,8 @@ const groupedFruits = computed(() => {
           <div class="price">{{ fruit.price }}</div>
           <div class="description">{{ fruit.description }}</div>
           <div class="extra-info">
-            <span class="sold">成交量:{{ fruit.sold }}</span>
-            <span class="reviews">评价数量:{{ fruit.reviews }}</span>
+            <span class="sold">月成交:{{ fruit.sold }}</span>
+            <span class="reviews">月评价:{{ fruit.reviews }}</span>
           </div>
         </div>
       </div>
@@ -47,12 +47,12 @@ const groupedFruits = computed(() => {
 .fruit-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .fruit-item {
   flex: 1;
   padding: 20px 20px 5px 20px;
+  margin: 10px;
   box-sizing: border-box;
   border: 1px solid grey;
 }
