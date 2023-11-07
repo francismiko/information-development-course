@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref, onMounted } from 'vue';
 
@@ -11,11 +10,9 @@ const fail = ref(false);
 
 const updateGame = () => {
   if (!fail.value) {
-    // 更新小球的位置
     ballX.value += rateX.value * 80;
     ballY.value += rateY.value * 80;
 
-    // 碰撞检测
     if (ballX.value < 0 || ballX.value >= 1440) {
       rateX.value = -rateX.value;
     }
@@ -48,7 +45,6 @@ window.addEventListener('keydown', (e) => {
 });
 
 onMounted(() => {
-  // 启动游戏循环
   setInterval(updateGame, 16);
 });
 </script>
