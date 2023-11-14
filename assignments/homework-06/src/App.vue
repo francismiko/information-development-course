@@ -14,8 +14,8 @@
 
     <!-- 操作按钮 -->
     <div class="actions">
-      <button @click="moveSelected(true)">》</button>
-      <button @click="moveSelected(false)">《</button>
+      <button @click="moveSelected(true)">▶</button>
+      <button @click="moveSelected(false)">◀</button>
     </div>
 
     <!-- 已选职位 -->
