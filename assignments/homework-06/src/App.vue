@@ -1,61 +1,115 @@
 <template>
-  <div>
-    <div class="checkbox-group">
-      <div v-for="item in items" :key="item.id" class="checkbox-item">
-        <input type="checkbox" v-model="item.checked" @change="updateSelection" />
-        <label>{{ item.label }}</label>
+  <div class="container">
+    <div class="box">
+      <div class="header">可选职位</div>
+      <div class="positions">
+        <div v-for="position in positions" :key="position"
+          :class="{ 'position': true, 'highlighted': temporarySelection.includes(position) }"
+          @click="addToTemporarySelection(position, false)">
+          {{ position }}
+        </div>
       </div>
     </div>
-    <button @click="selectAll">全选</button>
-    <button @click="invertSelection">反选</button>
-    <button @click="deselectAll">全不选</button>
-    <div>
-      <p>选中的内容：</p>
-      <div v-for="item in selectedItems" :key="item.id">{{ item.label }}</div>
+
+    <div class="actions">
+      <button @click="moveSelected(true)">》</button>
+      <button @click="moveSelected(false)">《</button>
+    </div>
+
+    <div class="box">
+      <div class="header">已选职位</div>
+      <div class="selected-positions">
+        <div v-for="position in selectedPositions" :key="position"
+          :class="{ 'position': true, 'highlighted': temporarySelection.includes(position) }"
+          @click="addToTemporarySelection(position, true)">
+          {{ position }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 
-const items = ref([
-  { id: 1, label: 'foo1', checked: false },
-  { id: 2, label: 'foo2', checked: false },
-  { id: 3, label: 'foo3', checked: false },
-  { id: 4, label: 'foo4', checked: false },
-  { id: 5, label: 'foo5', checked: false },
-]);
+const positions = ref(['前端开发', '后端开发', '全栈开发', '测试开发', '运维开发', '网络管理']);
+const selectedPositions = ref([]);
+const temporarySelection = ref([]);
 
-const selectedItems = computed(() => {
-  return items.value.filter(item => item.checked);
-});
+function addToTemporarySelection(position, isSelected) {
+  if (!temporarySelection.value.includes(position)) {
+    temporarySelection.value.push(position);
+  } else {
+    temporarySelection.value = temporarySelection.value.filter(p => p !== position);
+  }
+}
 
-const selectAll = () => {
-  items.value.forEach(item => (item.checked = true));
-};
-
-const invertSelection = () => {
-  items.value.forEach(item => (item.checked = !item.checked));
-};
-
-const deselectAll = () => {
-  items.value.forEach(item => (item.checked = false));
-};
-
-const updateSelection = () => {
-  // 可以在这里处理复选框状态的变化
-};
+function moveSelected(toSelect) {
+  if (toSelect) {
+    temporarySelection.value.forEach(position => {
+      if (!selectedPositions.value.includes(position)) {
+        selectedPositions.value.push(position);
+        positions.value = positions.value.filter(p => p !== position);
+      }
+    });
+  } else {
+    temporarySelection.value.forEach(position => {
+      if (selectedPositions.value.includes(position)) {
+        positions.value.push(position);
+      }
+    });
+    selectedPositions.value = selectedPositions.value.filter(
+      position => !temporarySelection.value.includes(position)
+    );
+  }
+  temporarySelection.value = [];
+}
 </script>
 
 <style scoped>
-.checkbox-group {
+.container {
   display: flex;
-  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.box {
+  border: 1px solid rgb(107, 107, 107);
+  padding: 10px;
+}
+
+.box {
+  width: 100px;
+  height: 300px;
+}
+
+.positions,
+.selected-positions {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.header {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.position {
+  margin: 5px;
+  cursor: pointer;
+}
+
+.highlighted {
+  border: 1px solid white;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.checkbox-item {
-  margin-right: 10px;
+button {
+  margin: 5px;
 }
 </style>
